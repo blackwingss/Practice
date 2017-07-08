@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>世界杯</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="lib/index.css">
+</head>
+
+<body>
+  <div class="perspective" style="perspective:333.5px">
+    <div class="load" style="display:block;">
+      <div class="loadImg">
+        <div class="loadTxt">loading</div>
+        <div class="circle"></div>
+        <div class="circle1"></div>
+      </div>
+    </div>
+    <div class="global" style="display:none;transform:translateZ(-333.5px);">
+      <div class="screen ease">
+        <section class="layer layer1" style="transform:rotateX(0deg) translateZ(333.5px);">
+          <div class="inner animated">
+            <div class="hd cf f12 yh">
+              <span class="fl">出品：腾讯体育</span>
+              <span class="fr">创意：腾讯网设计中心</span>
+            </div>
+            <div class="bd">
+              <div class="zh-logo">
+                <img src="http://mat1.gtimg.com/sports/worldcup2014/match/zh_logo.png" alt="">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="layer layer2" id="layer2" style="position:absolute;transform:rotateX(-90deg) translateZ(334px)">
+
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="http://alloyteam.github.io/AlloyFinger/asset/transform.js"></script>
+  <script src="http://alloyteam.github.io/AlloyFinger/alloy_finger.js"></script>
+  <script src="lib/index.js"></script>
+</body>
+
+</html>
