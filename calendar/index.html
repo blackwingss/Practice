@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .calendar {
+      width: 450px;
+      height: 350px;
+      background: #fff;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    }
+
+    .title {
+      height: 70px;
+      border-bottom: 1px solid rgba(0, 0, 0, .1);
+      text-align: center;
+      position: relative;
+    }
+
+    #calendar-title {
+      font-size: 25px;
+      font-family: arail;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 14px 0 0 0;
+    }
+
+    #calendar-year {
+      font-size: 15px;
+      font-family: arail;
+      font-weight: normal;
+    }
+
+    #prev,
+    #next {
+      position: absolute;
+      width: 60px;
+      height: 70px;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      text-indent: -9999px;
+      top: 0;
+    }
+
+    #prev {
+      left: 0;
+      background-image: url(./prev.png);
+    }
+
+    #next {
+      right: 0;
+      background-image: url(./next.png);
+    }
+
+    .body {
+      padding: 10px 20px;
+    }
+
+    .body-list ul {
+      width: 100%;
+      font-family: arial;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .body-list ul li {
+      width: 14.28%;
+      height: 36px;
+      line-height: 36px;
+      list-style-type: none;
+      display: block;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      float: left;
+      text-align: center;
+    }
+
+    .lightgrey {
+      color: #a8a8a8;
+    }
+
+    .darkgrey {
+      color: #565656;
+    }
+
+    .green {
+      color: #6ac13c;
+    }
+
+    .greenbox {
+      border: 1px solid #6ac13c;
+      background: #e9f8df;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calendar">
+    <div class="title">
+      <h1 class="green" id="calendar-title">月</h1>
+      <h2 class="green small" id="calendar-year">年</h2>
+      <a href="javascript:;" id="prev">上月</a>
+      <a href="javascript:;" id="next">下月</a>
+    </div>
+    <div class="body">
+      <div class="lightgrey body-list">
+        <ul>
+          <li>星期一</li>
+          <li>星期二</li>
+          <li>星期三</li>
+          <li>星期四</li>
+          <li>星期五</li>
+          <li>星期六</li>
+          <li>星期日</li>
+        </ul>
+      </div>
+      <div class="darkgrey body-list">
+        <ul id="days"></ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    const month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const month_name = ['一月', '二月', '三月', '四月', '五月', '六月', '七月',
+      '八月', '九月', '十月', '十一月', '十二月'
+    ];
+    const holder = document.getElementById('days');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const ctitle = document.getElementById('calendar-title');
+    const cyear = document.getElementById('calendar-year');
+
+    let my_date = new Date();
+    let my_year = my_date.getFullYear();
+    let my_month = my_date.getMonth();
+    let my_day = my_date.getDate();
+
+
+    function refreshDate() {
+      cyear.innerHTML = my_year;
+      ctitle.innerHTML = month_name[my_month];
+      let str = '';
+      // 该月总天数
+      let totalDay = daysMonth(my_month, my_year);
+      // 1号是星期几？从这个星期几往后一直
+      let firstDay = dayStart(my_month, my_year);
+
+      for (var i = 1; i < firstDay; i++) {
+        str += '<li></li>';
+      }
+      for (var i = 1; i <= totalDay; i++) {
+        // 今天是几号？
+        let myclass = '';
+        if (i == my_day &&
+          my_year == my_date.getFullYear() &&
+          my_month == my_date.getMonth()
+        ) {
+          myclass = 'green greenbox';
+        }
+        str += `<li class=${myclass}>${i}</li>`;
+      }
+      holder.innerHTML = str;
+    }
+
+    function dayStart(month, year) {
+      let tmpData = new Date(year, month, 1);
+      return (tmpData.getDay());
+    }
+
+    function daysMonth(month, year) {
+      let tmp = year % 4;
+      if (tmp == 0) {
+        // 闰年
+        return month_olympic[month];
+      } else {
+        return month_normal[month];
+      }
+    }
+    refreshDate();
+    prev.addEventListener('click', function(e) {
+      e.preventDefault();
+      my_month--;
+      if(my_month < 0) {
+        my_year--;
+        my_month = 11;
+      }
+      refreshDate();
+    }, false);
+    next.addEventListener('click', function(e) {
+      e.preventDefault();
+      my_month++;
+      if(my_month > 11) {
+        my_year++;
+        my_month = 0;
+      }
+      refreshDate();
+    }, false);
+  </script>
+</body>
+
+</html>
