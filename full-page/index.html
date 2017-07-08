@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://alloyteam.github.io/AlloyTouch/full_page/asset/animate.min.css">
+    <title>AlloyTouch Fullpage</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+
+      .section {
+        width: 100%;
+        font-size: 24px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .section .title {
+        line-height: 100px;
+        font-size: 24px;
+      }
+
+      #fullpage {
+        visibility: hidden;
+      }
+
+      .site__header {}
+
+      .powered {
+        font-size: 20px;
+        color: #454545;
+        margin-top: 20px;
+      }
+
+      .section-main {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        margin-top: -150px;
+        text-align: center;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      #demo0 {
+        width: 160px;
+        overflow: hidden;
+        border: 1px solid rgb(204, 204, 204);
+        text-indent: 10px;
+        margin: 0 auto;
+      }
+
+      #demo0 ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+      }
+
+      #demo0 li {
+        padding: 0 10px;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #fff;
+        background-color: #fafafa;
+        font-size: 14px;
+      }
+
+      #demo1 {
+        height: 210px;
+        width: 220px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .progress {
+        width: 100%;
+        font-size: 0px;
+        white-space: nowrap;
+        position: fixed;
+        bottom: 0px;
+        height: 4px;
+        background-color: #CCCCCC;
+      }
+
+      .progress-items {
+        width: 100%;
+        z-index: 2;
+        height: 4px;
+        position: absolute;
+      }
+
+      .progress-rate {
+        width: 0%;
+        z-index: 1;
+        position: absolute;
+        height: 4px;
+        background-color: #00ABEB;
+        transition: all .5s ease;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="fullpage" class="site__header" style="visibility: visible; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1518, 0, 1);">
+      <div class="section" style="height: 506px;">
+        <div class="section-main">
+          <div class="title animated bounceOutLeft" data-show="bounceInLeft" data-hide="bounceOutLeft" style="visibility: visible;">
+            AlloyTouch Introduction
+          </div>
+          <div data-delay="500" class="animated zoomOut" data-show="bounceInUp" data-hide="zoomOut" style="visibility: visible;">
+            <img src="http://alloyteam.github.io/AlloyTouch/full_page/asset/alloytouch.png">
+          </div>
+
+          <div data-delay="1200" class="powered animated bounceOut" data-show="bounceIn infinite" data-hide="bounceOut" style="visibility: visible;">
+            By AlloyTeam
+          </div>
+        </div>
+
+      </div>
+      <div class="section" style="height: 506px;">
+        <div class="section-main">
+          <div class="title animated flipOutY" data-delay="100" data-show="flipInY" data-hide="flipOutY" style="visibility: visible;">
+            Powerful Features
+          </div>
+          <div data-delay="400" class="animated zoomOut" data-show="zoomIn" data-hide="zoomOut" style="visibility: visible;">
+            <img src="http://alloyteam.github.io/AlloyTouch/full_page/asset/power.png">
+          </div>
+        </div>
+      </div>
+      <div class="section" style="height: 506px;">
+        <div class="section-main" style="margin-top: -206px;">
+          <div class="title animated flipOutY" data-delay="100" data-show="flipInY" data-hide="flipOutY" style="visibility: visible;">
+            Scrolling Demo↓
+          </div>
+          <div id="demo0" data-delay="400" class="animated zoomOut" data-show="zoomIn" data-hide="zoomOut" style="visibility: visible;">
+            <div style="height: 250px;overflow: hidden;">
+              <ul id="scroller" style="list-style: none; text-align: left; font-size: 14px; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);">
+                <li>Hello, AlloyTouch!</li>
+                <li>AlloyFinger</li>
+                <li>Transformjs</li>
+                <li>AlloyFlow - </li>
+                <li>Nuclear </li>
+                <li>AlloyGameEngine</li>
+                <li>Rosin</li>
+                <li>LivePool</li>
+                <li>AlloyStick</li>
+                <li>CodeStar</li>
+                <li>AlloyDesigner</li>
+                <li>JX</li>
+                <li>TEditor</li>
+                <li>JXAnimate</li>
+                <li>Spirit</li>
+                <li>AlloyImage</li>
+                <li>ModJS</li>
+                <li>Pretty row 16</li>
+                <li>stepify</li>
+                <li>AlloyTimer</li>
+                <li>Alloy Desktop</li>
+                <li>JX UI</li>
+                <li>CodeTank</li>
+                <li>iSpriter</li>
+                <li>Rythem</li>
+                <li>Go!Png </li>
+                <li> row 1</li>
+                <li> row 2</li>
+                <li> row 3</li>
+                <li>row 5</li>
+                <li> row 5</li>
+                <li> row 7</li>
+                <li> row 8</li>
+                <li> row 9</li>
+                <li> row 11</li>
+                <li> row 11</li>
+                <li> row 12</li>
+                <li> row 13</li>
+                <li> row 14</li>
+                <li> row 15</li>
+                <li> row 16</li>
+                <li> row 17</li>
+                <li> row 18</li>
+                <li> row 19</li>
+                <li> row 20</li>
+                <li> row 21</li>
+                <li> row 22</li>
+                <li> row 23</li>
+                <li> row 24</li>
+                <li style="border-bottom: none;"> row 25</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="section" style="height: 506px;">
+        <div class="section-main" style="margin-top: -206px;">
+          <div class="title animated flipInY" data-delay="100" data-show="flipInY" data-hide="flipOutY" style="visibility: visible;">
+            Rotation 3D Demo↓
+          </div>
+          <div id="demo1">
+            <img id="demo-img" src="http://alloyteam.github.io/AlloyTouch/full_page/asset/atLogo.png" style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);">
+          </div>
+        </div>
+      </div>
+      <div class="section" style="height: 506px;">
+        <div class="section-main">
+          <div class="title animated lightSpeedOut" data-delay="100" data-show="lightSpeedIn" data-hide="lightSpeedOut" style="visibility: visible;">
+            Physical Feedback
+          </div>
+          <div class="animated flipOutX" data-delay="500" data-show="flipInX" data-hide="flipOutX" style="visibility: visible;">
+            <img src="http://alloyteam.github.io/AlloyTouch/full_page/asset/physics.png">
+          </div>
+        </div>
+      </div>
+      <div class="section" style="height: 506px;">
+        <div class="section-main">
+          <div class="title animated flipOutY" data-delay="100" data-show="flipInY" data-hide="flipOutY">
+            Smooth Motion
+          </div>
+          <div class="animated rotateOut" data-delay="500" data-show="rotateIn" data-hide="rotateOut">
+            <img src="http://alloyteam.github.io/AlloyTouch/full_page/asset/speed.png">
+          </div>
+        </div>
+      </div>
+      <div class="section" style="height: 506px;">
+        <div class="section-main">
+          <div class="title animated rollOut" data-delay="100" data-show="rollIn" data-hide="rollOut">
+            Simple API
+          </div>
+          <div class="animated rotateOut" data-delay="500" data-show="rotateIn" data-hide="rotateOut">
+            <img src="http://alloyteam.github.io/AlloyTouch/full_page/asset/simple.png">
+          </div>
+        </div>
+      </div>
+      <div class="section" style="height: 506px;">
+        <div class="section-main">
+          <div class="title animated flipOutY" data-delay="100" data-show="flipInY" data-hide="flipOutY">
+            Excellent Contributors
+          </div>
+          <div class="animated flipOutY" data-delay="500" data-show="flipInY" data-hide="flipOutY">
+            <img src="http://alloyteam.github.io/AlloyTouch/full_page/asset/contributors.png">
+          </div>
+
+          <div class="animated powered bounceOut" data-delay="900" data-show="bounceIn" data-hide="bounceOut">
+            powered by
+            <a href="https://github.com/AlloyTeam/AlloyTouch">AlloyTouch</a> FullPage Plugin and animate.css
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="progress" class="progress">
+      <div class="progress-rate"></div>
+      <div class="progress-items"></div>
+    </div>
+    <script src="http://alloyteam.github.io/AlloyTouch/full_page/asset/progress_bar.js"></script>
+    <script src="http://alloyteam.github.io/AlloyTouch/transformjs/transform.js"></script>
+    <script src="http://alloyteam.github.io/AlloyTouch/alloy_touch.js"></script>
+    <script src="http://alloyteam.github.io/AlloyTouch/full_page/alloy_touch.full_page.js"></script>
+    <script>
+      let target = document.querySelector('#demo-img');
+      Transform(target, true);
+      new AlloyTouch({
+        // 反馈触摸的demo
+        touch: '#demo1',
+        // 只关心水平方向的touch,所以关闭垂直方向上的touch，提高性能
+        vertical: false,
+        target: target,
+        property: "rotateY",
+        touchStart: function(evt) {
+          evt.stopPropagation();
+        },
+        bindSelf: true,
+        touchMove: function(evt) {
+          evt.stopPropagation();
+        }
+      });
+      let pd;
+      let fp = new AlloyTouch.FullPage('#fullpage', {
+        animationEnd: function() {
+
+        },
+        leavePage: function(index) {
+          console.log(`leave${index}`);
+        },
+        beginToPage: function(index) {
+          console.log(`to${index}`);
+          // 时间点就是要找分页指示器 progressBar
+          pd.to(index / (this.length - 1))
+        }
+      });
+      pd = new ProgressBar('#progress', fp.length - 1)
+    </script>
+  </body>
+
+</html>
