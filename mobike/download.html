@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"
+class="istouch isandroid ischrome"
+style="font-size:58.5938px">
+<head>
+  <meta charset="UTF-8">
+  <title>摩拜单车应用下载页</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    border:0;
+    font-size: 100%;
+    font:inherit;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /*触摸高亮 */
+    -webkit-tap-highlight-color: transparent;
+  }
+  body, html {
+    height: 100%;
+    overflow: visible;
+  }
+  body {
+    font-size: .26rem;
+    color: #333;
+    background: #ededed;
+    font-family: "Microsoft Yahei", Arial;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust:none;
+    /*在iOS上，当你触摸并按住触摸的目标，
+    比如一个链接，Safari浏览器将显示
+    链接有关的系统默认菜单。这个属性可
+    以让你禁用系统默认菜单。*/
+    -webkit-touch-callout: none;
+  }
+  html * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #app-pinner-box {
+    width: 100%;
+    position: fixed;
+    z-index: 88;
+    left: 0;
+    /*bottom: 0;*/
+    -webkit-transform: translateY(-80px);
+    transform: translateY(-80px);
+    transition: transform .2s ease-out;
+  }
+  #app-pinner-box.slideDown{
+    transform: translateY(0px);
+  }
+  /*@keyframes show{
+    to{
+        transform: translateY(0px);
+    }
+  }*/
+  .app-pinner {
+    text-align: center;
+    width: 100%;
+    background: #fff;
+    left: 0;
+    bottom: 0;
+    z-index: 888;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    padding: 10px;
+    overflow: hidden;
+    -webkit-webkit-box-shadow: 0 0 1px 1px rgba(0,0,0,.1);
+    webkit-box-shadow: 0 0 1px 1px rgba(0,0,0,.1);
+  }
+  .app-pinner .app-icon {
+    float: left;
+    overflow: hidden;
+  }
+  .app-pinner img {
+    /*图片只设宽度， 高度会自动等比例调整。*/
+    width: 42px;
+    display:inline-block;
+    float: left;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .app-pinner .app-icon > div {
+    float: left;
+    text-align: left;
+  }
+  .app-pinner .app-icon > div b {
+    font-size: 14px;
+    margin: 2px 0;
+    color: #000;
+    display: block;
+  }
+  .app-pinner .app-icon > div span {
+    font-size: 12px;
+    color: #999;
+    margin-top: -2px;
+    display: block;
+    width: 2.9rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .app-pinner .download-btn {
+    float: right;
+    margin: 6px 0 auto;
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 2;
+    color: #fff;
+    background: #f05b48;
+    /*占元素的大小 盒子模型一部份， 不显示边框，但是内容小了2像素*/
+    border: 1px solid transparent;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+
+  /*内容样式*/
+  .wrap {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+  }
+  .page-top {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .page-top .bg {
+    position: fixed;
+    width: 100%;
+    height: 46%;
+    z-index:-1;
+    background-image: url(https://m.mobike.com/app/images/image_6.10f2dd7.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+  }
+  .page-top .banner, .page-top .content {
+    position: relative;
+    z-index:1;
+
+  }
+  .page-top .banner {
+    width: 100%;
+    position: relative;
+    height: 46%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .page-top .banner .logo {
+    display: block;
+    /*百分比是自适应网页中最简单最好用的方式。 */
+    width: 18.75%;
+    height: auto;
+    margin-top: 9%;
+    margin-bottom: 4%;
+  }
+  .page-top .banner .slogan-text {
+    display: block;
+    width: 56.2%;
+    height: auto;
+  }
+  .page-top .banner .banner-btn {
+    display: block;
+    background: rgba(240, 91, 72, .95);
+    width: 2.912rem;
+    font-weight: 400;
+    -webkit-border-radius: 999px;
+    border-radius: 999px;
+    line-height: 2.6;
+    color: #fff;
+    margin-top: 9%;
+    text-decoration: none;
+  }
+
+
+
+  </style>
+</head>
+<body>
+<div id="app-pinner-box">
+  <div class="app-pinner">
+    <div class="app-icon">
+      <img src="https://m.mobike.com/app/images/mobike.4c06c1f.png"
+      alt="摩拜单车">
+      <div>
+        <b zh="摩拜单车" en="Mobike"
+        data-lang-flag="lang0"></b>
+        <span zh="全球首款无桩共享单车"
+          en="Unlock your world"
+          data-lang-flag="lang1"></span>
+      </div>
+    </div>
+    <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.mobike.mobikeapp"
+    class="download-btn">
+      <span zh="立即下载" en="Download"
+      data-lang-flag="lang2"></span>
+    </a>
+  </div>
+</div>
+<div class="wrap">
+  <header class="page-top">
+    <div class="bg"></div>
+    <div class="banner">
+      <img src="https://m.mobike.com/app/images/logo_1.79df85d.png"
+       class="logo">
+      <img src="https://m.mobike.com/app/images/slogan_1.206b8d3.png"
+       class="slogan-text">
+      <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.mobike.mobikeapp"
+       id="download-top-link">
+        <button class="banner-btn">立即下载</button>
+      </a>
+    </div>
+  </header>
+</div>
+<div class="wrap"></div>
+<script>
+  // http 请求 chrome
+  const local = 'en';
+  const localEles =
+    document.querySelectorAll('[data-lang-flag]');
+  const downloadBox = document
+    .querySelector('#app-pinner-box');
+  // console.log(localEles);
+  localEles.forEach(location => {
+    location.innerText =
+    location.getAttribute(local);
+  })
+
+  // 滚动事件
+  window.onscroll = function() {
+    // 滚动的位置
+    const scrollTop = document.documentElement.scrollTop
+     || document.body.scrollTop;
+    if(scrollTop > 200
+      && !downloadBox.classList.contains('slideDown')) {
+      downloadBox.classList.add('slideDown');
+    }
+    if(scrollTop < 50 &&
+      downloadBox.classList.contains('slideDown')) {
+      downloadBox.classList.remove('slideDown');
+    }
+  }
+
+</script>
+</body>
+</html>
