@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="500" height="500" style="background-color:#000;">
+</canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d'),
+        cirX = canvas.width / 2,
+        cirY = canvas.height / 2,
+        red = Math.PI * 2 / 100,
+        n = 1,
+        speed = 150,
+        r = 100;
+
+      function DreamLoading() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        writeCircle();
+        writeText(n);
+        writeBlue(n)
+        if (n < 100) {
+          n = n + 0.1;
+        } else {
+          // n = 0;
+
+        }
+        window.requestAnimationFrame(DreamLoading);
+      }
+
+      function writeBlue(n) {
+        context.save();
+        context.strokeStyle = "#49f";
+        context.lineWidth = 4;
+        context.beginPath();
+        context.arc(cirX, cirY, r, -Math.PI / 2, -Math.PI / 2 + red * n, false);
+        context.stroke();
+        context.restore();
+      }
+
+      function writeText(n) {
+        context.save();
+        context.strokeStyle = '#49f';
+        context.font = '40px Arail';
+        context.strokeText(n.toFixed(0) + '%', cirX - 30, cirY + 10);
+        context.stroke();
+        context.restore();
+      }
+
+      function writeCircle() {
+        // 画个圆
+        // stroke 边框
+        // 保存当前的绘制缓冲
+        context.save();
+        // 开始路径
+        context.beginPath();
+        context.strokeStyle = '#49f';
+        context.arc(cirX, cirY, r, 0, Math.PI * 2, false);
+        context.stroke();
+        context.restore();
+      }
+      DreamLoading();
+    }
+  </script>
+</body>
+
+</html>
