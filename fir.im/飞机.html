@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>fir.im</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				background-color: yellow;
+				
+			}
+			.plane-wrapper {
+				position: absolute;
+				top: 50%;
+				/*视点距离*/
+				-webkit-perspective: 2500px;
+				perspective: 2500px;
+				-webkit-animation: undulate 8s linear infinite alternate;
+				animation: undulate 8s linear infinite alternate;
+			}
+			@-webkit-keyframes undulate {
+				0%,100%,50%{
+					-webkit-transform: translate3d(0,0,0);
+				}
+				25%{
+					-webkit-transform: translate3d(-6px,-18px,0);
+				}
+				75%{
+					-webkit-transform: translate3d(6px,18px,0);
+				}
+			}
+			.plane-wrapper .rotate-container {
+				position: absolute;
+				top: 51.7003%;
+				left: 13.1%;
+				width: 27.424%;
+				height: 14.4474%;
+				-webkit-animation: rotating .2s linear infinite reverse;
+				animation: rotating .2s linear infinite reverse;
+				-webkit-transform-origin: center center; 
+				transform-origin: center center;
+			}
+			.plane-wrapper .propeller {
+				width: 100%;
+				-webkit-transform: rotate(-28deg);
+			}
+			@-webkit-keyframes  rotating{
+				0%{
+					-webkit-transform: rotate(0deg);
+				}
+				100%{
+					-webkit-transform: rotate(360deg);
+				}
+			}
+			.section-1.animate-out .plane-wrapper {
+				-webkit-animation: plane-out 1.3s ease-out forwards;
+				animation: plane-out 1.3s ease-out forwards;
+			}
+			@-webkit-keyframes plane-out {
+				0%{
+					-webkit-transform: scale(1) translateX(0);
+				}
+				30%{
+					-webkit-transform: scale(.8) translateX(160px);
+				}
+				100%{
+					-webkit-transform: scale(1.2) translateX(-2000px);
+				}
+			}
+			@keyframes plane-out {
+				0%{
+					-webkit-transform: scale(1) translateX(0);
+				}
+				30%{
+					-webkit-transform: scale(.8) translateX(160px);
+				}
+				100%{
+					-webkit-transform: scale(1.2) translateX(-2000px);
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="section section-1 ready">
+			<div class="plane-wrapper" style="left: 315.5px;">
+				<img src="http://fir.im/images/plane.svg" class="plane"/>
+				<div class="rotate-container">
+					<img src="http://fir.im/images/propeller.svg" class="propeller"/>
+				</div>
+			</div>
+		</div>
+		<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+		<script>
+//			jquery $函数 document.querySelectorAll() 查找元素的
+            //.on document addEventListener
+//          事件编程
+			$(document).on('scroll',function(){
+//				css3 动画, 定义好一个运动类, js动态添加进去.
+				$('.section').addClass('animate-out');
+			})
+		</script>
+	</body>
+</html>
