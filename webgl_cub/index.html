@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Three.js 立方体</title>
+  <script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/three.js/r56/three.min.js"></script>
+  <script src="http://cdn.bootcss.com/jquery-requestAnimationFrame/0.1.2/jquery.requestAnimationFrame.min.js"></script>
+</head>
+
+<body>
+  <canvas id="webglcanvas" style="border:none;background-color:#000;margin:0 auto;display:block;" height="500" width="500"></canvas>
+  <script>
+    let renderer = null;
+    let scene = null;
+    let camera = null;
+    let cube = null;
+    $(function() {
+      let canvas = document.getElementById('webglcanvas');
+      // 渲染
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true
+      });
+      renderer.setSize(canvas.width, canvas.height);
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(45,
+        canvas.width / canvas.height, 1, 4000);
+      scene.add(camera)
+      let geometry = new THREE.CubeGeometry(2, 2, 2);
+      // 网格
+      let mapUrl = 'webgl-logo-256.jpg';
+      let map = THREE.ImageUtils.loadTexture(mapUrl);
+      let material = new THREE.MeshBasicMaterial({
+        map: map
+      })
+
+      cube = new THREE.Mesh(geometry, material);
+      cube.position.z = -8;
+      cube.rotation.x = Math.PI / 5;
+      cube.rotation.y = Math.PI / 5;
+      scene.add(cube);
+      run();
+      // 场景组成 scene
+      // camera  镜头
+      // 元素 形状 三角形  圆等
+      // 纹理
+    })
+
+    function run() {
+      requestAnimationFrame(function() {
+        run();
+      });
+      renderer.render(scene, camera);
+      animate()
+    }
+    let duration = 5000;
+    let currentTime = Date.now();
+
+    function animate() {
+      let now = Date.now();
+      let deltat = now - currentTime;
+      currentTime = now;
+      let fract = deltat / duration;
+      let angel = Math.PI * 2 * fract;
+      cube.rotation.y += angel;
+    }
+  </script>
+</body>
+
+</html>
