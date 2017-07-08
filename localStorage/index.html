@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalStorage</title>
+  <style>
+  html {
+    box-sizing: border-box;
+    background: url(http://wes.io/hx9M/oh-la-la.jpg)
+     center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Futura,"Trebuchet MS", Arial, sans-serif;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  .wrapper {
+    padding: 20px;
+    max-width: 350px;
+    background: rgba(255,255,255,.95);
+    -webkit-box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+  }
+  h2 {
+    text-align: center;
+    margin: 0;
+    font-weight: 200;
+  }
+  .plates {
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    text-align: left;
+  }
+  .plates li {
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    padding: 10px 0;
+    font-weight: 100;
+    display: -webkit-flex;
+    display: flex;
+  }
+  .plates label {
+    flex:1;
+    cursor: pointer;
+  }
+  .plates input {
+    display: none;
+  }
+  .add-items {
+    margin-top: 20px;
+  }
+  .add-items input {
+    padding: 10px;
+    outline:0;
+    border: 1px solid rgba(0,0,0,.1);
+  }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <h2>LOCAL TAPAS</h2>
+  <p></p>
+  <ul class="plates">
+    <li>Loading Tapas...</li>
+  </ul>
+  <form class="add-items">
+    <input type="text" name="item"
+    placeholder="Item Name" required>
+    <input type="submit" value="+ Add Item">
+  </form>
+</div>
+<script>
+   const addItems = document.querySelector('.add-items'),
+   itemsLists = document.querySelector('.plates'),
+   items = JSON.parse(localStorage.getItem('item')) || [];
+  // populateList(localStorage.getItem('item'));
+  function addItem(e) {
+    e.preventDefault();
+    const oInput = this.querySelector('[name=item]');
+    const text = oInput.value.trim();
+    // populateList(text);
+    oInput.value = '';
+    const item = {
+      text,
+      done: false
+    };
+    items.push(item);
+    console.log(items);
+    populateList();
+    // 将列表项保存到localStorage中
+    localStorage.setItem('item', JSON.stringify(items));
+  }
+  function populateList() {
+    // console.log(items);
+    itemsLists.innerHTML = (items.map((item, i) => {
+        return `
+          <li>
+            <input type="checkbox" data-index=${i} id="item${i}" ${item.done?'checked':''} />
+            <label for="item${i}">${item.text}</label>
+          </li>
+        `;
+    })).join('');
+    // const oLi = document.createElement('li');
+    // const oInput = document.createElement('input');
+    // const oLabel = document.createElement('label');
+    // oLabel.appendChild(document.createTextNode(text));
+    // oLi.appendChild(oInput);
+    // oLi.appendChild(oLabel);
+    // itemsLists.appendChild(oLi);
+  }
+  window.onload = function() {
+    populateList();
+    addItems.addEventListener('submit', addItem);
+  }
+</script>
+</body>
+</html>
