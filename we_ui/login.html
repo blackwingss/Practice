@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WEUI 登录</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link href="http://cdn.bootcss.com/weui/0.4.2/style/weui.min.css" rel="stylesheet">
+  <style>
+  body {
+    background-color: #efeff4;
+  }
+  </style>
+</head>
+<body ontouchstart>
+  <div id="container">
+    <div class="register">
+      <form id="registerForm" action="http://www.baidu.com/">
+        <div class="weui_cells_title">用户注册</div>
+        <div class="weui_cells weui_cells_form">
+          <div class="weui_cell">
+            <div class="weui_cell_hd">
+              <label for="" class="weui_label">用户名</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+              <input autocomplete="off" type="text" class="weui_input" placeholder="请输入用户名" name="username" required>
+            </div>
+           <div class="weui_cell_ft"><i class="weui_icon_warn"></i>
+
+           </div>
+          </div>
+          <div class="weui_cell">
+            <div class="weui_cell_hd">
+              <label for="" class="weui_label">手机号</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+              <input type="tel" class="weui_input" placeholder="请输入手机号" name="telephone">
+            </div>
+           <div class="weui_cell_ft"><i class="weui_icon_warn"></i>
+           </div>
+          </div>
+          <div class="weui_cell">
+            <div class="weui_cell_hd">
+              <label for="" class="weui_label">密码</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+              <input autocomplete="off" type="password" class="weui_input" placeholder="请输入密码" name="password">
+            </div>
+           <div class="weui_cell_ft"><i class="weui_icon_warn"></i>
+           </div>
+          </div>
+        </div>
+        <p class="weui_cells_tips">在微信里面其实可以调网页授权</p>
+        <div class="weui_btn_area">
+        	<button type="submit" class="weui_btn weui_btn_primary" id="submit_btn">注册</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+  	const submitBtn = document.getElementById('submit_btn');
+  	const usernameInput = document.querySelector('[name="username"]');
+  	const telInput = document.querySelector('[name="telephone"]');
+  	const passwordInput = document.querySelector('[name="password"]');
+  	const oForm = document.getElementById('registerForm');
+  	oForm.addEventListener('submit',(event) => {
+//		alert('submit');
+  		event.preventDefault();
+  		const username = usernameInput.value;
+  		const password = passwordInput.value;
+  		const telephone = telInput.value;
+  		if(username.length < 6){
+  			usernameInput.parentNode.parentNode.classList.add('weui_cell_warn');
+  			return false;
+  		} else {
+  			usernameInput.parentNode.parentNode.classList.remove('weui_cell_warn');
+  		}
+
+//		手机验证
+		if(telephone.length!=11){
+  			usernameInput.parentNode.parentNode.classList.add('weui_cell_warn');
+  			return false;
+  		} else {
+  			usernameInput.parentNode.parentNode.classList.remove('weui_cell_warn');
+  		}
+//		密码验证
+        if(username.length < 6){
+  			usernameInput.parentNode.parentNode.classList.add('weui_cell_warn');
+  		} else {
+  			usernameInput.parentNode.parentNode.classList.remove('weui_cell_warn');
+  		}
+  		oForm.submit();
+  	});
+  	/*submitBtn.addEventListener('click',() => {
+  		<!--点击时才获取-->
+  		const username = usernameInput.value;
+  		const password = passwordInput.value;
+  		const telephone = telInput.value;
+  		console.log(username,password,telephone);
+		检测用户名
+		检测手机号
+		检查密码
+		提交给后台
+  	});*/
+
+
+  </script>
+</body>
+</html>

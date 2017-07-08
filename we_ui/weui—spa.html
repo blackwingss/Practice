@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>weui spa 实现原理</title>
+  <link rel="stylesheet" href="/weui.css"/>
+  <link rel="stylesheet" href="/example.css"/>
+</head>
+<body ontouchstart>
+  <div class="weui-toptips
+   weui-toptips_warn js_tooltips">错误提示</div>
+  <div id="container">
+
+  </div>
+  <script type="text/html" id="tpl_home">
+    <div class="page">
+      <div class="page__hd">
+        <h1 class="page__title">
+          <img src="https://weui.io/images/logo.png"
+           alt="WeUI" height="21px" />
+        </h1>
+        <p class="page__desc">
+          WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。
+        </p>
+      </div>
+      <div class="page__bd">
+        <ul>
+          <li>
+            <div class="weui-flex js_category">
+              <p class="weui-flex__item">表单</p>
+              <img src="https://weui.io/images/icon_nav_form.png"/>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </script>
+  <script type="text/html" id="tpl_button">
+    <div class="page">
+      <div class="page__hd">
+        <h1 class="page__title">Button</h1>
+        <p class="page__desc">按钮</p>
+      </div>
+      <div class="page__bd"></div>
+    </div>
+  </script>
+  <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+  <script src="/weui.min.js"></script>
+  <script>
+  // 目标
+  // http://localhost:3000/#
+  // 显示home
+  // 面向对象开发，将数据和方法包装到一个对象
+  // 对外隐藏实现的细节，内部是个生态系统
+  var pageManager = {
+    // _表示私有的属性
+    // 给作者自己看的
+    _pageIndex: 1,
+    _configs: [],
+    _defaultPage: null,
+    _pageAppend: function() {},
+    // 去往页面
+    // 页面对象 config
+    // {
+    //   name,
+    //   template,
+    //   url
+    // }
+    _go: function(config) {
+      this._pageIndex++;
+      history.replaceState && history.replaceState()
+    },
+    // 根据相应的key 返回相应的page
+    _find: function(key, value) {
+      var page = null;
+      for (var i = 0, len = this._configs.length;
+      i < len; i++) {
+        // key name  value  home
+        if(this._configs[i][key] === value) {
+          page = this._configs
+          break;
+        }
+      }
+      return page;
+    },
+    push: function (config) {
+      this._configs.push(config);
+      // 方法返回this 当前对象时，链式调用
+      return this;
+    },
+    setPageAppend: function (pageAppend) {
+      console.log('setPageAppend');
+      // 给了一个回调函数过来，
+      // 对象init可以调用
+      this._pageAppend = pageAppend;
+      return this;
+    },
+    setDefault: function (defaultPage) {
+      this._defaultPage =
+       this._find('name', defaultPage);
+       console.log(this._defaultPage);
+      return this;
+    },
+    init: function() {
+      var self = this;
+      $(window).on('hashchange', function() {
+      })
+      var url = location.hash.indexOf('#')===0?location.hash: '#'
+      var page = self._find('url', url);
+      this._go(page);
+      return this;
+    }
+  }
+
+  function preload() {
+    // jquery  不要混搭  原生js
+    $(window).on('load', function() {
+      // load 发生时， 页面已加载并显示
+      // 图片， 又不在首页显示
+      // 预加载图片
+      // 只要下载过图片，去到别的页，用到图片
+      // 不需要再加载了，图片缓存
+      var imgList = [
+        "https://weui.io/images/layers/content.png",
+        "https://weui.io/images/layers/navigation.png",
+        "https://weui.io/images/layers/popout.png",
+        "https://weui.io/images/layers/transparent.gif"];
+      for(var i = 0, len = imgList.length; i < len; i++) {
+        new Image().src = imgList[i];
+      }
+    })
+  }
+
+  function setPageManager() {
+    var pages = {},
+      tpls = $('script[type="text/html"]');
+    var winH = $(window).height();
+    for(var i = 0, len = tpls.length; i < len; i++) {
+      var tpl = tpls[i], name = tpl.id.replace(/^tpl_/,"")
+      pages[name] = {
+        name: name,
+        url: '#' + name,
+        template: '#' + tpl.id
+      }
+    }
+    pages.home.url = '#';
+    for (var page in pages) {
+      pageManager.push(pages[page]);
+    }
+    pageManager.setPageAppend(function($html){
+    })
+    .setDefault('home')
+    .init()
+  }
+
+  function init() { //某个项目，有个 init方法
+    preload ();
+    setPageManager ();
+  }
+  init() ;
+  </script>
+</body>
+</html>

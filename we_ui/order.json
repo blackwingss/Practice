@@ -1,0 +1,35 @@
+session_id 用户的一次会话 存在内存里
+cookie 曲奇饼 存储在用户浏览器上的一个短字符，域名
+{
+  "_id": ObjectId(1231231212),
+  "user_id": ObjectId(1212121),
+  "state": "CART|PAY|ARRIVED|OVER|CLOSED|REOPEN",
+  "line_items": [
+    {
+      _id: ObjectId(1121221),
+      sku: "9092",
+      name: "Extra Large Wheelbarrow",
+      quantity: 1,
+      pricing: {
+        retail:5897,
+        sale: 4897
+      }
+    },
+    {
+      _id: ObjectId(1121221),
+      sku: "9091",
+      name: "iphone7s",
+      quantity: 1,
+      pricing: {
+        retail:6897,
+        sale: 6397
+      }
+    }
+  ],
+  "totle": 11294,
+  "shipping_address": {
+    "city": "南昌",
+    "address": "东华理工研1-701",
+    "zip": "330027"
+  }
+}

@@ -1,0 +1,96 @@
+/** {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+.page .weui-grids {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.page .weui-grids .weui-grid {
+    width: 33.33%;
+    border: 1px solid gray;
+
+}*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+html,
+body {
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+body {
+    font-family: sans-serif, apple-system-font;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    -webkit-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.page,
+body {
+    background-color: #f6f6f6;
+}
+
+.container {
+    overflow: hidden;
+}
+
+.container .page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.page {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(100%);
+    /*transition: opacity .2s, transform .5s;*/
+}
+
+.page.js_show {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.page__hd {
+    padding: 40px;
+}
+
+.page__title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.page__desc {
+    font-size: 14px;
+    text-align: left;
+    color: #888;
+    margin-top: 5px;
+}

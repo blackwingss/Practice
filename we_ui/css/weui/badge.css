@@ -1,0 +1,12 @@
+.weui-badge {
+  display: inline-block;
+  padding: .15em .4em;
+  min-width: 8px;
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
+  background-color: #f43530;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  vertical-align: middle;
+}
