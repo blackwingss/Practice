@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>知乎</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="app">
+        <div class="homepage">
+            <div class="header">
+                <div class="model morning" :class="{morning:!night,night:night}">
+                    <span class="navigation" @click.stop.prevent="toggleSidebar"></span>
+                    <h2>topic news</h2>
+                </div>
+            </div>
+            <div>
+                <transition name="fold">
+                    <div class="sidebar" v-show="sidebarShow">
+                        <div class="user">
+                            <div class="avatar"></div>
+                            <div class="username">seven</div>
+                            <div class="back" @click.stop.prevent="toggleSidebar">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAPtSURBVGje7VlNSFVBFP7MF1QWUpqgwaPA2hUVtA0O5ELomf0RQiDkyiCtjBYSaBARkWkRvZULIaigTCtoUXDAbWBSuxICoYJ+ibQCk1o098zMe3N/3rvXXos3mzkz997v++bMvTNzzgXKpVxKXCqKf5SrsQ3VWIp5fMUz+vqPBPAGZNCO7c6LkxjBA3q9SAK4Ch24EunWbgzTXKICuAZncLwgVw3hHH1KRAADx3DVcWEGU3iLH1iOBmxF2nFHF67R75gCuBETqLe6xjCMR7SQd2clmtGBVqvzHXbSdAwBvAdjVkcbbgePiStwCDetrlYaL1IAn8SA0dxPo2H+kif34a7R7KHLfncuCQDpM+izqIpOD9AoqpCV5gD3FewBa/Qt9CA6uYGRwf0wL/gIsOZ+C70ohh4AeDOeS8P5LjgFcCNeSWNj8FscKiEEy/EOcAoTxuhj0QM0jS3SmOBUBAHolO++pXjnGxJeoEWZ9ejMvZo3BbwW75WZpaPx6RXqdaGuow/BHugV63RS9BZWr30hxwO8Bt4GEmHZ4V14DOAODlK4D/TSVEOf/T1wWKzxUMi/9MABrI/gA4132Oy2BHCF7Pdt+ZuNDz0AzIbz0wLalHmFDb/bHmgU62EB9PvoYwQPmJiaJ0dAs6rHKHBMOfT3ItGDZmV1bda9toB2VQ8nT2/htusuQwCn5Kj5dFHoNe52vSKaHlgtlu+cxqI3cYXLFFCn6hm/LyAmPWgBMzlcMDeHtaqeikB/HGnuDmSbwy3HqzylDq8elyWgWtVvfSAfG/ZQhAFfQG1en4ftcVlTsFTVP6K4M0KpcfR52B6XJWBe1csTEuAKSzxsj8uaAi+8bPABbDIm4UQo/SxuO3o9bAllTQHePr3VjUhPWEsYLOYrMLDlTGBOgXcQSXOlnwQ0SWOU9xbKzpUSwHlcloAvYtX6QcSUoHGFyxBAvzCpzB3+GLEkeLiT9MvlAWBE1R1BKDEkeLgjuss6kvFGvFTmquQ3ZF6Jb8rcRBIr2B7QMcDuYDDbCxHHrzGNWMMSQL/hre83/b4Ep4Qo46+UoL3bDPBzD6U3xNoTBikS7kRSoPFumN35gcmg5IJC3oOCxq/nf4isVTQ/MDkv1sWk6C2s8/aFPAH0AV3K7ORMQuPPSGDWZQdmzvCcU5iR8DRGbkDwdI7gHdJ6CfIVUPL8AEDTRrLtFW+ONXpN3+oaik+SisbRI43nxb4LnDESND3uZF1Amo770C+NLE7R94LIV+CSkY7op7Pu+0qeJ/y/M6VAwbniI7C357i5YiAkW/4GP7EM6xYxW65ElPJ/gYgo5R8TQ0bp/hnlSUnkr1m5lMsfi1NBIdHIdmwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDQtMjZUMTA6NTE6NDArMDg6MDAzAZVRAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTA0LTI2VDEwOjUxOjQwKzA4OjAwQlwt7QAAAABJRU5ErkJggg==" width="22" height="22" alt="">
+                            </div>
+                        </div>
+                        <div class="themes-list">
+                            <ul>
+                                <li class="themes current">
+                                    <div class="icons">
+                                        <i class="icon iconfont icon-shouyeshouye"></i>
+                                    </div>
+                                    <div class="themetitle">德玛西亚</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">策士统领</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">草丛射手</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">暗黑魔法</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">哈撒剋</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">天崩地裂</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">世外桃源</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">飞龙在天</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">旋转木马</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">旋转木马</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">旋转木马</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">旋转木马</div>
+                                </li>
+                                <li class="themes">
+                                    <div class="themetitle">旋转木马</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bottom-menu">
+                            <div class="menu">
+                                <div class="avatar">
+                                    <i class="icon iconfont icon-lixianwenjian"></i>
+                                </div>
+                                <div class="name">离线</div>
+                            </div>
+                            <div class="menu" @click="toggleNight()">
+                                <div class="avatar">
+                                    <img src="data:image/png;base64,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" width="18" height="18">
+                                </div>
+                                <div class="name">夜间</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </transition>
+                <transition name="fade">
+                    <div class="mask" v-show="sidebarShow"></div>
+                </transition>
+            </div>
+            <div class="newList">
+                <div class="model">
+                    <ul>
+                        <li v-for="item in news" class="new border-1px morning">
+                            <span class="title">{{item.title}}</span>
+                            <span class="avatar">
+                                <img class="loaded" :src="item.pic">
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="http://cdn.bootcss.com/vue/2.0.7/vue.min.js"></script>
+<script>
+let vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                night: false,
+                sidebarShow: true,
+                news: [
+                    {
+                        title: "title1", // fake data
+                    }
+                ]
+            }
+        },
+        methods: {
+            toggleSidebar() {
+                this.sidebarShow = !this.sidebarShow
+            },
+            toggleNight() {
+                this.night = !this.night
+            }
+        },
+        mounted(){
+          fetch('https://www.easy-mock.com/mock/5902e9be7a878d73716dfc04/members/zhihu/news')
+            .then(data => data.json())
+            .then(data => {
+                this.news = data
+            })
+        }
+    })
+</script>
+</body>
+</html>
